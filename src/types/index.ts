@@ -28,6 +28,7 @@ export interface Lead {
   documento?: string
   cuil?: string
   vendedorNombre: string
+  //
 }
 
 export interface Interaccion {
