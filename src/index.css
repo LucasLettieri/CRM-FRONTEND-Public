@@ -1,0 +1,127 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-app: var(--app);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-subtle: var(--subtle);
+  --color-line: var(--line);
+  --color-line-subtle: var(--line-subtle);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-danger: var(--danger);
+  --color-danger-subtle: var(--danger-subtle);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-text: var(--sidebar-text);
+  --color-sidebar-text-active: var(--sidebar-text-active);
+  --color-sidebar-active: var(--sidebar-active);
+  --color-sidebar-hover: var(--sidebar-hover);
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+:root {
+  --app: #fbfbfc;
+  --surface: #ffffff;
+  --surface-hover: #f7f7f8;
+  --subtle: #f4f4f6;
+  --line: #dfe0e3;
+  --line-subtle: #ececee;
+  --text-primary: #0e0f11;
+  --text-secondary: #6b6e76;
+  --text-tertiary: #9a9ca3;
+  --accent: #5e6ad2;
+  --accent-hover: #4c58c4;
+  --accent-subtle: #eef0fd;
+  --danger: #e5484d;
+  --danger-subtle: #fdecec;
+
+  --sidebar: #f7f7f8;
+  --sidebar-border: #e8e8ea;
+  --sidebar-text: #6b6e76;
+  --sidebar-text-active: #0e0f11;
+  --sidebar-active: #e9eafc;
+  --sidebar-hover: #eeeeef;
+
+  --badge-blue-bg: #e0e7ff;    --badge-blue-fg: #4147c4;
+  --badge-yellow-bg: #fdf1cd;  --badge-yellow-fg: #93670c;
+  --badge-green-bg: #dcf3e2;   --badge-green-fg: #2c8654;
+  --badge-red-bg: #fbe1e1;     --badge-red-fg: #c22a2f;
+  --badge-emerald-bg: #bdeecf; --badge-emerald-fg: #0a7a48;
+  --badge-gray-bg: #eceef0;    --badge-gray-fg: #5b5e66;
+  --badge-violet-bg: #ede9fe;  --badge-violet-fg: #6d28d9;
+
+  color-scheme: light;
+}
+
+.dark {
+  --app: #0a0a0c;
+  --surface: #131316;
+  --surface-hover: #1a1a1e;
+  --subtle: #19191d;
+  --line: #2b2b30;
+  --line-subtle: #232327;
+  --text-primary: #f2f3f5;
+  --text-secondary: #9a9ca3;
+  --text-tertiary: #6c6e75;
+  --accent: #7c87e8;
+  --accent-hover: #8f99ec;
+  --accent-subtle: rgba(124, 135, 232, 0.16);
+  --danger: #f87171;
+  --danger-subtle: rgba(248, 113, 113, 0.12);
+
+  --sidebar: #0d0d10;
+  --sidebar-border: #232327;
+  --sidebar-text: #9a9ca3;
+  --sidebar-text-active: #f2f3f5;
+  --sidebar-active: rgba(124, 135, 232, 0.16);
+  --sidebar-hover: #1a1a1e;
+
+  --badge-blue-bg: rgba(99, 102, 241, 0.16);   --badge-blue-fg: #a5b0f5;
+  --badge-yellow-bg: rgba(234, 179, 8, 0.16);  --badge-yellow-fg: #e8c467;
+  --badge-green-bg: rgba(34, 197, 94, 0.12);   --badge-green-fg: #6fcb92;
+  --badge-red-bg: rgba(239, 68, 68, 0.16);     --badge-red-fg: #f2a0a2;
+  --badge-emerald-bg: rgba(16, 185, 129, 0.22);--badge-emerald-fg: #4ee6a8;
+  --badge-gray-bg: #1f1f23;                    --badge-gray-fg: #9a9ca3;
+  --badge-violet-bg: rgba(139, 92, 246, 0.18); --badge-violet-fg: #c4b5fd;
+
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--app);
+  color: var(--text-primary);
+}
+
+@layer components {
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+  .badge-blue { background: var(--badge-blue-bg); color: var(--badge-blue-fg); }
+  .badge-yellow { background: var(--badge-yellow-bg); color: var(--badge-yellow-fg); }
+  .badge-green { background: var(--badge-green-bg); color: var(--badge-green-fg); }
+  .badge-red { background: var(--badge-red-bg); color: var(--badge-red-fg); }
+  .badge-emerald { background: var(--badge-emerald-bg); color: var(--badge-emerald-fg); }
+  .badge-gray { background: var(--badge-gray-bg); color: var(--badge-gray-fg); }
+  .badge-violet { background: var(--badge-violet-bg); color: var(--badge-violet-fg); }
+  
+  .input-base {
+    @apply bg-surface border border-line rounded-md px-3 py-2 text-sm text-text-primary placeholder:text-text-tertiary outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/25;
+  }
+  .btn-primary {
+    @apply bg-accent text-white rounded-md text-sm font-medium hover:bg-accent-hover disabled:opacity-50 transition-colors;
+  }
+  .btn-secondary {
+    @apply border border-line text-text-secondary rounded-md text-sm font-medium hover:bg-subtle hover:text-text-primary transition-colors;
+  }
+  .card {
+    @apply bg-surface border border-line-subtle rounded-xl;
+  }
+}
